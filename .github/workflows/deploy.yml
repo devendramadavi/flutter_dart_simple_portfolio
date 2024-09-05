@@ -22,6 +22,6 @@ on:
           with:
             folder: build/web
             publish_directory: ./
-            repo: devendramadavi/portfolio
+            repo: devendramadavi/flutter_dart_simple_portfolio
             branch: gh-pages
 
