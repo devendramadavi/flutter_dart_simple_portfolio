@@ -1,0 +1,27 @@
+name: Deploy Flutter Web App
+
+on:
+  push:
+    branches: [main]
+
+  jobs:
+    build-and-deploy:
+      runs-on: ubuntu-latest
+
+      steps:
+        - uses: actions/checkout@v3
+        - uses: actions/setup-node@v3
+          with:
+            node-version: '16.x'
+        - name: Install dependencies
+          run: npm install
+        - name: Build Flutter web
+          run: flutter build web --release
+        - name: Deploy to GitHub Pages
+          uses: actions/deploy@v3
+          with:
+            folder: build/web
+            publish_directory: ./
+            repo: devendramadavi/portfolio
+            branch: gh-pages
+
